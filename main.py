@@ -23,8 +23,11 @@ def get_data(bbox: str):
                 'type',
                 'FeatureCollection',
                 'features',
-                json_agg(
-                    ST_AsGeoJSON(t.*):: json
+                coalesce(
+                    json_agg(
+                        ST_AsGeoJSON(t.*):: json
+                    ),
+                    '[]'
                 )
             )
         FROM
