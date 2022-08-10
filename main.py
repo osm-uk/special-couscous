@@ -30,7 +30,8 @@ def get_data(bbox: str):
         FROM
             (
                 SELECT
-                    wkb_geometry
+                    wkb_geometry,
+                    'yes' as building
                 FROM
                     ms_buildings
                 WHERE
